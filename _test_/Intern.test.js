@@ -5,8 +5,8 @@ const employee = new Intern('Claire', '12A', 'email', 'school')
 expect (employee.school).tobe(school);
 });
 
-// test("the getRole() function should overide and return manager", () => {
-//     const employee =  new Intern('Claire', '12A', 'email', 'school'); 
+// test("the getRole() function should overide and return intern", () => {
+//     const employee =  new Intern('Claire', '12A', 'email', 'office', 'school'); 
 //     expect(employee.getRole()).toBe("Intern");
 // });
 
