@@ -8,8 +8,7 @@ test("can set the git hub account", () => {
 });
 
 
-
-// test("the getRole() function should overide and return Engineer", () => {
-//     const employee = new Engineer('Claire', '12A', 'email', 'office');
-//     expect(employee.getRole()).toBe(Engineer);
-// });
+test("the getRole() function should overide and return Engineer", () => {
+    const employee = new Engineer('Claire', '12A', 'email', 'github');
+    expect(employee.getRole()).toBe("Engineer");
+});

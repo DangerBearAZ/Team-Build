@@ -6,3 +6,7 @@ test("the getRole() function should overide and return manager", () => {
     expect(employee.getRole()).toBe("Manager")
 });
 
+test("the getRole() function should overide and return Manager", () => {
+    const employee =  new Manager('Claire', '12A', 'email', 'office'); 
+    expect(employee.getRole()).toBe("Manager");
+});
