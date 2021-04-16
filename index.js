@@ -4,8 +4,9 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require('./lib/Manager');
 const inquirer = require('inquirer');
+const {startHtml, fillCard} = require('./src/team-template');
 
-//put your people here lol! 
+//put your people here 
 const employee = [];
 
 
@@ -72,15 +73,16 @@ function addEmployee() {
             }
             ])
                 .then(function (data) {
+                    var employeeConstruction = 
+                    //new intern some data use switch case some what like if then 
                     console.log(data.newEmployee);
                     if (data.newEmployee) {
                         addEmployee();
 
                     } 
                     else {
-                        //write html funtion 
-                        // function startHtml();
-                        console.log("this would be writes if i wrote that")
+                        startHtml()
+                        fillCard()
                     }
                 })
         });

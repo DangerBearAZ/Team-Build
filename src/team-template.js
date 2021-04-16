@@ -20,7 +20,7 @@ function startHtml() {
             <div class="card-group"> 
     
     `;
-    fs.writeFile('./output/team.html', html, funton(err) {
+    fs.writeFile("../output/team.html", html, function(err) {
         if (err) {
             console.log(err);
         } 
@@ -86,7 +86,7 @@ function fillCard(member) {
         </html> `
     }
     console.log('adding Employee');
-    fs.appendFile("./output/team.html", fillCard, function(err) {
+    fs.appendFile("../output/team.html", fillCard, function(err) {
         if (err) {
             console.log(err);
         };
@@ -94,3 +94,5 @@ function fillCard(member) {
     });
       
 }
+
+module.exports = {startHtml, fillCard}
