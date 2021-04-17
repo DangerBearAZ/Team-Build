@@ -17,14 +17,9 @@ function startHtml() {
             <span class="navbar-brand mb-0 h1 w-100 text-center">Team Profile</span>
         </nav>
         <div class="container">
-            <div class="card-group"> 
-    
+            <div class="card-group">
     `;
-    fs.writeFile("../output/team.html", html, function(err) {
-        if (err) {
-            console.log(err);
-        } 
-    });
+writeToFile(html);
     console.log("start");
 }
     
@@ -34,65 +29,56 @@ function fillCard(member) {
     const role = member.getRole();
     const id = member.getId();
     const email = member.getEmail();
-    let newCard = "";
-    if (role === "Engineer") {
-        const gitHub = member.getGithub();
-        fillCard =
-            `<div class="card">
+    
+    let engineer_text;
+let intern_text;
+let manager_text;
+
+//if statements
+engineer_text = (role === "Engineer") ? '<li class="list-group-item">GitHub: ${gitHub}</li>'  : '' ;
+intern_text = (role === "Intern") ? '<li class="list-group-item">School: ${school}</li>'  : '' ;
+manager_text = (role === "Manager") ? '<li class="list-group-item">Office: ${office}</li>'  : '' ;
+
+
+    
+    
+        html =
+    `<div class="card">
     <div class="card-body">
     <h5 class="card-header">${name}<br /><br />${role}</h5>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${id}</li>
         <li class="list-group-item">Email Address: ${email}</li>
-         <li class="list-group-item">GitHub: ${gitHub}</li> 
+         ${engineer_text}
+        ${intern_text}
+        ${manager_text}
     </ul> 
     </div>
-</div> 
-</div>
-</div> 
-</body>
-    </html> `
-    }
-    else if (role === "Intern") {
-        const school =  member.getSchool();
-        fillCard =  `<div class="card">
-        <div class="card-body">
-        <h5 class="card-header">${name}<br /><br />${role}</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${id}</li>
-            <li class="list-group-item">Email Address: ${email}</li>
-             <li class="list-group-item">School: ${school}</li> 
-        </ul> 
-        </div>
-    </div> 
-    </div>
-    </div> 
-    </body>
-        </html> `
-    } else {
-        fillCard =  `<div class="card">
-        <div class="card-body">
-        <h5 class="card-header">${name}<br /><br />${role}</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${id}</li>
-            <li class="list-group-item">Email Address: ${email}</li>
-             <li class="list-group-item">Office: ${office}</li> 
-        </ul> 
-        </div>
-    </div> 
-    </div>
-    </div> 
-    </body>
-        </html> `
-    }
+`
+    
     console.log('adding Employee');
-    fs.appendFile("../output/team.html", fillCard, function(err) {
+writeToFile(html);
+      
+}
+
+function endHtml() {
+    
+writeToFile(`
+            </div> 
+        </div>
+    </div> 
+</body>
+</html> `);
+    
+}
+
+
+function writeToFile(html){
+        fs.writeFile("../output/team.html", html, function(err) {
         if (err) {
             console.log(err);
-        };
-        console.log('finished');
+        } 
     });
-      
 }
 
 // add end end HTML function  
