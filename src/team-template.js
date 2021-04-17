@@ -95,4 +95,7 @@ function fillCard(member) {
       
 }
 
+// add end end HTML function  
+
+
 module.exports = {startHtml, fillCard}

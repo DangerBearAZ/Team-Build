@@ -83,6 +83,7 @@ function addEmployee() {
                     else {
                         startHtml()
                         fillCard()
+                        //this is where end ccard goes
                     }
                 })
         });
