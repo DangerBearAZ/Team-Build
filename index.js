@@ -4,14 +4,11 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require('./lib/Manager');
 const inquirer = require('inquirer');
-const {startHtml, fillCard} = require('./src/team-template');
+const {startHtml, fillCard, endHtml, writeToFile } = require('./src/team-template');
 
 //put your people here 
 const employee = [];
 
-
-// addEmployee();
-// fillCard();
 
 function addEmployee() {
     inquirer.prompt([{
@@ -83,7 +80,8 @@ function addEmployee() {
                     else {
                         startHtml()
                         fillCard()
-                        //this is where end ccard goes
+                        endHtml()
+                        writeToFile()
                     }
                 })
         });
@@ -91,4 +89,9 @@ function addEmployee() {
   
 
 
-addEmployee();
+
+addEmployee()
+// .then(writeTofile)
+// .catch(err => {
+//     console.log(err);
+//   });

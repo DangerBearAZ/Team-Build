@@ -1,3 +1,4 @@
+//everthing needed to fill out card 
 const fs = require('fs');
 
 function startHtml() {
@@ -30,7 +31,7 @@ function fillCard(member) {
     const id = member.getId();
     const email = member.getEmail();
     
-    let engineer_text;
+let engineer_text;
 let intern_text;
 let manager_text;
 
@@ -73,15 +74,28 @@ writeToFile(`
 }
 
 
-function writeToFile(html){
-        fs.writeFile("../output/team.html", html, function(err) {
-        if (err) {
-            console.log(err);
-        } 
+// function writeToFile(html){
+//         fs.writeFile("../output/team.html", html, function(err) {
+//         if (err) {
+//             console.log(err);
+//         } 
+//     });
+// }
+
+const writeToFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('../output/team.html', fileContent, err =>{
+            if (err) {
+              reject(err);
+              return;
+            }
+            resolve({
+              ok: true,
+              message: 'File created!'
+            });
+          });
+        
     });
 }
 
-// add end end HTML function  
-
-
-module.exports = {startHtml, fillCard}
+module.exports = {startHtml, fillCard, endHtml, writeToFile}
