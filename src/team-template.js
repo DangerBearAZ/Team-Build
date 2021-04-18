@@ -1,7 +1,23 @@
 //everthing needed to fill out card 
 const fs = require('fs');
+function fillCard() {
+   
+    const name = member.getName();
+    const role = member.getRole();
+    const id = member.getId();
+    const email = member.getEmail();
+    
+let engineer_text;
+let intern_text;
+let manager_text;
 
-function startHtml() {
+//if statements
+engineer_text = (role === "Engineer") ? '<li class="list-group-item">GitHub: ${gitHub}</li>'  : '' ;
+intern_text = (role === "Intern") ? '<li class="list-group-item">School: ${school}</li>'  : '' ;
+manager_text = (role === "Manager") ? '<li class="list-group-item">Office: ${office}</li>'  : '' ;
+
+
+
     const html =
         `
     <!DOCTYPE html>
@@ -19,32 +35,7 @@ function startHtml() {
         </nav>
         <div class="container">
             <div class="card-group">
-    `;
-writeToFile(html);
-    console.log("start");
-}
-    
-
-function fillCard(member) {
-    const name = member.getName();
-    const role = member.getRole();
-    const id = member.getId();
-    const email = member.getEmail();
-    
-let engineer_text;
-let intern_text;
-let manager_text;
-
-//if statements
-engineer_text = (role === "Engineer") ? '<li class="list-group-item">GitHub: ${gitHub}</li>'  : '' ;
-intern_text = (role === "Intern") ? '<li class="list-group-item">School: ${school}</li>'  : '' ;
-manager_text = (role === "Manager") ? '<li class="list-group-item">Office: ${office}</li>'  : '' ;
-
-
-    
-    
-        html =
-    `<div class="card">
+            <div class="card">
     <div class="card-body">
     <h5 class="card-header">${name}<br /><br />${role}</h5>
     <ul class="list-group list-group-flush">
@@ -55,47 +46,42 @@ manager_text = (role === "Manager") ? '<li class="list-group-item">Office: ${off
         ${manager_text}
     </ul> 
     </div>
-`
-    
-    console.log('adding Employee');
-writeToFile(html);
-      
-}
-
-function endHtml() {
-    
-writeToFile(`
-            </div> 
+    </div> 
         </div>
     </div> 
 </body>
-</html> `);
-    
+</html>
+    `;
+
 }
+    
 
 
-// function writeToFile(html){
-//         fs.writeFile("../output/team.html", html, function(err) {
-//         if (err) {
-//             console.log(err);
-//         } 
-//     });
-// }
 
-const writeToFile = fileContent => {
-    return new Promise((resolve, reject) => {
-        fs.writeFile('../output/team.html', fileContent, err =>{
-            if (err) {
-              reject(err);
-              return;
-            }
-            resolve({
-              ok: true,
-              message: 'File created!'
-            });
-          });
-        
+
+function writeToFile(html){
+        fs.writeFile("../output/team.html", html, function(err) {
+        if (err) {
+            console.log(err);
+        } 
     });
 }
 
-module.exports = {startHtml, fillCard, endHtml, writeToFile}
+// const writeToFile = html => {
+//     return new Promise((resolve, reject) => {
+//         fs.writeFile('../output/team.html', html, err =>{
+//             if (err) {
+//               reject(err);
+//               return;
+//             }
+//             resolve({
+//               ok: true,
+//               message: 'File created!'
+//             });
+//           });
+        
+//     });
+// }
+
+
+module.exports = {fillCard, writeToFile }

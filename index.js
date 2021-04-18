@@ -4,7 +4,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require('./lib/Manager');
 const inquirer = require('inquirer');
-const {startHtml, fillCard, endHtml, writeToFile } = require('./src/team-template');
+const { fillCard, writeToFile } = require('./src/team-template');
 
 //put your people here 
 const employee = [];
@@ -78,10 +78,7 @@ function addEmployee() {
 
                     } 
                     else {
-                        startHtml()
                         fillCard()
-                        endHtml()
-                        writeToFile()
                     }
                 })
         });
@@ -91,7 +88,7 @@ function addEmployee() {
 
 
 addEmployee()
-// .then(writeTofile)
+// .then(fillCard)
 // .catch(err => {
 //     console.log(err);
 //   });
