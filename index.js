@@ -5,6 +5,7 @@ const Intern = require("./lib/Intern");
 const Manager = require('./lib/Manager');
 const inquirer = require('inquirer');
 const { fillCard, writeToFile } = require('./src/team-template');
+const Employee = require('./lib/Employee');
 
 //put your people here 
 const employee = [];
@@ -27,7 +28,7 @@ function addEmployee() {
     {
         type: 'list',
         message: "Select employee roll(Required)",
-        choices: ["Manager", "Engineer", "Intern"],
+        choices: ["Manager", "Engineer", "Intern", "Employee"],
         name: "role",
         validate: roleInput => {
             if (roleInput) {
@@ -70,25 +71,22 @@ function addEmployee() {
             }
             ])
                 .then(function (data) {
-                    var employeeConstruction = 
+                    var employeeConstruction =  new Employee(name, id, email);
                     //new intern some data use switch case some what like if then 
-                    console.log(data.newEmployee);
+                    employee.push(employeeConstruction)
+                    console.log(employee);
+                    
+                    
                     if (data.newEmployee) {
                         addEmployee();
 
                     } 
                     else {
-                        fillCard()
+                        fillCard(employee)
                     }
                 })
         });
 };
   
 
-
-
 addEmployee()
-// .then(fillCard)
-// .catch(err => {
-//     console.log(err);
-//   });
