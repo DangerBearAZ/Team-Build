@@ -27,3 +27,13 @@
 ## Node.js File System Module to write HTML 
 
 # Contributor Joey Levi - he toutored me for an hour.  
+
+## Passing tests 
+![alt text](https://github.com/DangerBearAZ/Team-Build/blob/develop/passtest.JPG "all jest test pass")
+
+## Prompt function 
+![alt text](https://github.com/DangerBearAZ/Team-Build/blob/develop/prompt.JPG "Promt works") 
+
+## Error with file writes 
+
+![alt text](https://github.com/DangerBearAZ/Team-Build/blob/develop/error.JPG "error") 
